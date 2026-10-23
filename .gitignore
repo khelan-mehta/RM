@@ -1,0 +1,44 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# ---- Virtual environments (bundled, ~18 GB — never commit) ----
+venv/
+venv_py314/
+.venv/
+env/
+
+# ---- Datasets & generated data (large / third-party) ----
+dataset/
+augmented_glass/
+cnn_dataset/
+spectrogram_dataset/
+train_images/
+validation_images/
+test_images/
+output/
+
+# ---- Large model artifact (keep the 5 MB glass_detector_v2.keras) ----
+models/glass_cnn.keras
+
+# ---- Runtime audio / captures ----
+recordings/
+*.wav
+live_spectrogram.png
+
+# ---- Secrets & runtime state (MUST NOT be published) ----
+khelan/khelan.db
+khelan/khelan.db-shm
+khelan/khelan.db-wal
+khelan/cert.pem
+khelan/key.pem
+khelan/ADMIN_LOGIN.txt
+.env
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

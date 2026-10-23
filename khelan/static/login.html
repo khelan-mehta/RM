@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khelan · Sign in</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+  body{display:grid;place-items:center;min-height:100vh}
+  .login{width:340px;max-width:92vw;background:var(--panel);border:1px solid var(--line);
+    border-radius:18px;padding:28px}
+  .login .logo{width:52px;height:52px;border-radius:14px;font-size:26px;margin:0 auto 14px}
+  .login h1{text-align:center;font-size:20px;letter-spacing:2px;margin-bottom:2px}
+  .login p{text-align:center;color:var(--muted);font-size:12px;margin:0 0 20px}
+  .login label{display:block;font-size:12px;color:var(--muted);margin-bottom:14px}
+  .login input{margin-top:6px;width:100%;background:var(--panel2);border:1px solid var(--line);
+    color:var(--text);border-radius:10px;padding:10px 12px;font-size:14px}
+  .login .btn{width:100%;margin-top:6px;padding:11px}
+  .err{color:var(--alert);font-size:12.5px;min-height:18px;text-align:center;margin-top:10px}
+</style>
+</head>
+<body>
+<form class="login" id="form">
+  <div class="logo" style="display:grid;place-items:center;font-weight:900;color:#fff;
+    background:linear-gradient(135deg,var(--accent),#7a0f1b)">K</div>
+  <h1>KHELAN</h1>
+  <p>AI Smart-Home Automation</p>
+  <label>Username<input id="u" type="text" autocomplete="username" value="admin" autofocus></label>
+  <label>Password<input id="p" type="password" autocomplete="current-password"></label>
+  <button class="btn" type="submit">Sign in</button>
+  <div class="err" id="err"></div>
+</form>
+<script>
+document.getElementById("form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const r = await fetch("/api/login", {method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({username: u.value, password: p.value})});
+  if (r.ok) { location.href = "/"; }
+  else { document.getElementById("err").textContent = "Invalid username or password."; }
+});
+</script>
+</body>
+</html>
